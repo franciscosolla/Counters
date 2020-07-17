@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { CountersScreen, ConfigScreen } from '~/screens';
 import { useTheme } from '~/hooks/useTheme';
+import { StarIcon } from '~/components';
 
 
 // Root Navigator ////////////////////////////////////////////////////////////
@@ -46,7 +47,12 @@ const Tab = createBottomTabNavigator()
 
 function TabNavigator() {
   return (
-    <Tab.Navigator initialRouteName='CountersNav' >
+    <Tab.Navigator
+      initialRouteName='CountersNav'
+      screenOptions={{
+        tabBarIcon: ({ focused, color, size }) => <StarIcon size={size} color={color} />
+      }}
+    >
       <Tab.Screen name='CountersNav' component={CountersNavigator} options={{ title: 'Counters' }} />
       <Tab.Screen name='ConfigNav' component={ConfigNavigator} options={{ title: 'Config' }} />
     </Tab.Navigator>

@@ -9,7 +9,7 @@ interface ScreenContainerProps {
 
 export function ScreenContainer({ children }: ScreenContainerProps) {
     return (
-        <View >
+        <View style={{ flex: 1 }} >
             { children }
         </View>
     )

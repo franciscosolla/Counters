@@ -1,0 +1,94 @@
+import React from 'react'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+
+import { useCounters, useSelected, ThemeType, useTheme } from '~/hooks'
+
+import CounterView from '../CounterView'
+import { ResetIcon, MinusIcon, PlusIcon } from '../Icons'
+
+export default CounterEdit
+
+export function CounterEdit() {
+
+    const [theme] = useTheme()
+    const styles = Styles(theme)
+
+    const [counters, a, r, increment, decrement, reset] = useCounters()
+    const [selected] = useSelected()
+
+    if (!counters.length) return null
+
+    return (
+        <View style={styles.container} >
+
+            <Text style={styles.title} >
+                Selected Counter
+            </Text>
+
+            <CounterView
+                containerStyle={styles.counterView} 
+                counter={counters[selected]}
+                index={selected}
+                isSelected={true}
+            />
+
+            <View style={styles.actionContainer} >
+                
+                <TouchableOpacity style={[styles.actionButton, { flex: 10 }]} onPress={reset} >
+                    <Text style={styles.actionTitle} >Reset</Text>
+                    <ResetIcon color={theme.color.quaternary} />
+                </TouchableOpacity>
+
+                <View style={{ flex: 3 }} />
+
+                <TouchableOpacity style={styles.actionButton} onPress={decrement} >
+                    <MinusIcon color={theme.color.quaternary} />
+                </TouchableOpacity>
+
+                <View style={{ flex: 1 }} />
+
+                <TouchableOpacity style={styles.actionButton} onPress={increment} >
+                    <PlusIcon color={theme.color.quaternary} />
+                </TouchableOpacity>
+
+            </View>
+        
+        </View>
+    )
+}
+
+const Styles = (theme: ThemeType) => StyleSheet.create({
+    container: {
+        margin: 20
+    },
+    title: {
+        color: theme.color.text,
+        fontWeight: 'bold',
+        fontSize: 25,
+        marginBottom: 20
+    },
+    counterView: {
+        marginHorizontal: 0,
+        marginVertical: 0
+    },
+    actionContainer: {
+        flexDirection: 'row',
+        marginTop: 20
+    },
+    actionButton: {
+        flex: 5,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        backgroundColor: theme.color.secondaryBackground,
+        borderRadius: 5,
+        padding: 10,
+        alignItems: 'center',
+        elevation: 5
+    },
+    actionTitle: {
+        color: theme.color.quaternary,
+        marginRight: 10,
+        fontWeight: 'bold',
+        fontSize: 18
+    }
+})

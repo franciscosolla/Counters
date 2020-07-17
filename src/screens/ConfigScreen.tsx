@@ -1,14 +1,15 @@
 import React from 'react'
 
-import { ScreenContainer } from '~/components'
-import { Text } from 'react-native'
+import { ScreenContainer, CountersConfig, CounterEdit } from '~/components'
+import { View } from 'react-native'
 
 export default ConfigScreen
 
 export function ConfigScreen() {
     return (
         <ScreenContainer >
-            <Text >ConfigScreen</Text>
+            <CountersConfig />
+            <CounterEdit />
         </ScreenContainer>
     )
 }
