@@ -44,7 +44,7 @@ const Styles = (theme: ThemeType) => StyleSheet.create({
     container: {
         backgroundColor: theme.color.secondaryBackground,
         marginHorizontal: 20,
-        marginVertical: 15,
+        marginVertical: 20,
         padding: 10,
         borderColor: theme.color.tertiaryBackground,
         borderWidth: 2,

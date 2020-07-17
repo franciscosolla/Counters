@@ -34,6 +34,11 @@ const en = {
 
     'components/CounterView': {
         title: 'Counter '
+    },
+
+    'components/CounterList': {
+        emptyListTitle: `No Counters 🙁`,
+        emptyListInfo: 'Create a counter in the tab "Config"!'
     }
 }
 

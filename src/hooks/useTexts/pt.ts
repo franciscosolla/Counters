@@ -34,6 +34,11 @@ const ptbr = {
 
     'components/CounterView': {
         title: 'Contador '
+    },
+
+    'components/CounterList': {
+        emptyListTitle: `Nenhum Contador 🙁`,
+        emptyListInfo: 'Crie um contador na aba "Config"!'
     }
 }
 
