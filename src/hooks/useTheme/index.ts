@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
+import AsyncStorage from '@react-native-community/async-storage'
 import { BehaviorSubject } from "rxjs"
 
 import lightTheme from './light'
 import darkTheme from "./dark"
-import { AsyncStorage } from "react-native"
 
 export const Themes = {
     light: lightTheme,

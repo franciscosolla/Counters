@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
 import { BehaviorSubject } from 'rxjs'
-import { AsyncStorage } from 'react-native'
 
 const SELECTED = new BehaviorSubject<number>(0)
 

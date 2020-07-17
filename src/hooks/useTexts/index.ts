@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
-import { NativeModules, Platform, AsyncStorage } from 'react-native'
+import { NativeModules, Platform } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import { BehaviorSubject } from "rxjs"
 
 import ptbr from "./pt"

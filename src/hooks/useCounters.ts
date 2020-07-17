@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
 import { BehaviorSubject } from 'rxjs'
-import { AsyncStorage } from 'react-native'
 import { useSelected } from './useSelected'
 
 export interface Counter {
