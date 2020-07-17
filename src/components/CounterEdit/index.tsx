@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
-import { useCounters, useSelected, ThemeType, useTheme } from '~/hooks'
+import { useCounters, useSelected, ThemeType, useTheme, useTexts } from '~/hooks'
 
 import CounterView from '../CounterView'
 import { ResetIcon, MinusIcon, PlusIcon } from '../Icons'
@@ -13,6 +13,8 @@ export function CounterEdit() {
     const [theme] = useTheme()
     const styles = Styles(theme)
 
+    const [texts] = useTexts('components/CounterEdit')
+
     const [counters, a, r, increment, decrement, reset] = useCounters()
     const [selected] = useSelected()
 
@@ -22,7 +24,7 @@ export function CounterEdit() {
         <View style={styles.container} >
 
             <Text style={styles.title} >
-                Selected Counter
+                {texts.title}
             </Text>
 
             <CounterView
@@ -35,20 +37,20 @@ export function CounterEdit() {
             <View style={styles.actionContainer} >
                 
                 <TouchableOpacity style={[styles.actionButton, { flex: 10 }]} onPress={reset} >
-                    <Text style={styles.actionTitle} >Reset</Text>
-                    <ResetIcon color={theme.color.quaternary} />
+                    <Text style={styles.actionTitle} >{texts.reset}</Text>
+                    <ResetIcon color={theme.color.quaternaryText} />
                 </TouchableOpacity>
 
                 <View style={{ flex: 3 }} />
 
                 <TouchableOpacity style={styles.actionButton} onPress={decrement} >
-                    <MinusIcon color={theme.color.quaternary} />
+                    <MinusIcon color={theme.color.quaternaryText} />
                 </TouchableOpacity>
 
                 <View style={{ flex: 1 }} />
 
                 <TouchableOpacity style={styles.actionButton} onPress={increment} >
-                    <PlusIcon color={theme.color.quaternary} />
+                    <PlusIcon color={theme.color.quaternaryText} />
                 </TouchableOpacity>
 
             </View>
@@ -86,7 +88,7 @@ const Styles = (theme: ThemeType) => StyleSheet.create({
         elevation: 5
     },
     actionTitle: {
-        color: theme.color.quaternary,
+        color: theme.color.quaternaryText,
         marginRight: 10,
         fontWeight: 'bold',
         fontSize: 18

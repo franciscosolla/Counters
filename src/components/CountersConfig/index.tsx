@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Button } from './components'
-import { useTheme, ThemeType, useCounters } from '~/hooks'
+import { useTheme, ThemeType, useCounters, useTexts } from '~/hooks'
 
 export default CountersConfig
 
@@ -10,19 +10,21 @@ export function CountersConfig() {
     const [theme] = useTheme()
     const styles = Styles(theme)
 
+    const [texts] = useTexts('components/CountersConfig')
+
     const [_, addCounter, removeCounter] = useCounters()
 
     return (
         <View style={styles.container} >
 
             <Text style={styles.title} >
-                Counters
+                {texts.title}
             </Text>
 
             <View style={styles.buttonsContainer} >
-                <Button text={`Add\nCounter`} onPress={addCounter} />
+                <Button text={texts.add} onPress={addCounter} />
                 <View style={{ flex: 1 }} />
-                <Button text={`Remove\nCounter`} onPress={removeCounter} />
+                <Button text={texts.remove} onPress={removeCounter} />
             </View>
             
         </View>

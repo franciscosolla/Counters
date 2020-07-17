@@ -35,7 +35,7 @@ const Styles = (theme: ThemeType) => StyleSheet.create({
         elevation: 5
     },
     text: {
-        color: theme.color.quaternary,
+        color: theme.color.quaternaryText,
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center'

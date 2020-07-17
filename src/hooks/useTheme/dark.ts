@@ -1,3 +1,5 @@
+import { pSBC } from "~/utils"
+
 const darkTheme = {
 
     name: 'dark' as 'dark',
@@ -7,17 +9,19 @@ const darkTheme = {
     
     color: {
 
-        primary: '#001c47', 
-        secondary: '#0082c9',
+        primary: pSBC(-0.8, '#001c47'), 
+        secondary: pSBC(-0.9, '#0082c9'),
         tertiary: '#ff9500',
         quaternary: '#14437b',
         
-        background: '#0082c9',
-        secondaryBackground: '#d8d8d8',
+        background: pSBC(-0.9, '#0082c9'),
+        secondaryBackground: pSBC(-0.9, '#d8d8d8'),
+        tertiaryBackground: pSBC(-0.8, '#14437b'),
 
-        text: '#333333',
+        text: pSBC(+0.5, '#333333'),
         secondaryText: '#FFFFFF',
-        tertiaryText: '#999999'
+        tertiaryText: pSBC(+0.5, '#999999'),
+        quaternaryText: pSBC(+0.5, '#14437b'),
     }
     
 }

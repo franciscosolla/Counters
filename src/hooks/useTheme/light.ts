@@ -14,10 +14,12 @@ const lightTheme = {
         
         background: '#0082c9',
         secondaryBackground: '#d8d8d8',
+        tertiaryBackground: '#14437b',
 
         text: '#333333',
         secondaryText: '#FFFFFF',
-        tertiaryText: '#999999'
+        tertiaryText: '#999999',
+        quaternaryText: '#14437b',
     }
     
 }

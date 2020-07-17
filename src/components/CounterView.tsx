@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, StyleProp, ViewStyle } from 'react-native'
 
-import { Counter, useTheme, ThemeType } from '~/hooks'
+import { Counter, useTheme, ThemeType, useTexts } from '~/hooks'
 
 export default CounterView
 
@@ -19,6 +19,8 @@ export function CounterView({ counter, index, isSelected, onSelection, container
     const [theme] = useTheme()
     const styles = Styles(theme)
 
+    const [texts] = useTexts('components/CounterView')
+
     return (
         <TouchableOpacity
             style={[styles.container, containerStyle, isSelected ? undefined : { opacity: 0.4, borderColor: 'transparent' }]}
@@ -27,7 +29,7 @@ export function CounterView({ counter, index, isSelected, onSelection, container
         >
             
             <Text style={[styles.title, isSelected ? undefined : { color: theme.color.text }]} >
-                Counter {index+1}
+                {texts.title}{index+1}
             </Text>
 
             <Text style={styles.value} >
@@ -44,7 +46,7 @@ const Styles = (theme: ThemeType) => StyleSheet.create({
         marginHorizontal: 20,
         marginVertical: 15,
         padding: 10,
-        borderColor: theme.color.quaternary,
+        borderColor: theme.color.tertiaryBackground,
         borderWidth: 2,
         borderRadius: 2,
         elevation: 5

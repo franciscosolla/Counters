@@ -9,7 +9,7 @@ import { createStackNavigator, StackNavigationOptions, TransitionPresets } from 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { StatusBar } from 'expo-status-bar';
 
-import { CountersScreen, ConfigScreen, SettingsScreen } from '~/screens';
+import { CountersScreen, ConfigScreen, SettingsScreen, PickerScreen } from '~/screens';
 import { useTheme, ThemeType } from '~/hooks';
 import { StarIcon, SettingsIcon, ListIcon, TimerIcon } from '~/components';
 
@@ -44,6 +44,7 @@ export default function App() {
       >
         <Stack.Screen name='TabNav' component={TabNavigator} options={{ headerShown: false }} />
         <Stack.Screen name='Settings' component={SettingsScreen} options={{ ...TransitionPresets.ModalPresentationIOS }} />
+        <Stack.Screen name='Picker' component={PickerScreen} options={{ ...TransitionPresets.ModalPresentationIOS }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
