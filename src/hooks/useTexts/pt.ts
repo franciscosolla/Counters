@@ -3,6 +3,12 @@ const ptbr = {
     code: 'pt' as 'pt',
     language: 'Português',
 
+    'app': {
+        Settings: 'Opções',
+        Config: 'Config',
+        Counters: 'Contadores'
+    },
+
     'screens/Settings': {
         theme: 'Tema',
         language: 'Idioma',

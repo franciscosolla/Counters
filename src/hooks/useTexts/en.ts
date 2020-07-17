@@ -3,6 +3,12 @@ const en = {
     code: 'en' as 'en',
     language: 'English',
 
+    'app': {
+        Settings: 'Settings',
+        Config: 'Config',
+        Counters: 'Counters'
+    },
+
     'screens/Settings': {
         theme: 'Theme',
         language: 'Language',
