@@ -3,12 +3,16 @@ import { enableScreens } from 'react-native-screens';
 enableScreens();
 
 import React from 'react';
+import { TouchableOpacity } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationOptions, TransitionPresets } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { CountersScreen, ConfigScreen } from '~/screens';
-import { useTheme } from '~/hooks/useTheme';
-import { StarIcon } from '~/components';
+import { StatusBar } from 'expo-status-bar';
+
+import { CountersScreen, ConfigScreen, SettingsScreen } from '~/screens';
+import { useTheme, ThemeType } from '~/hooks';
+import { StarIcon, SettingsIcon, ListIcon, TimerIcon } from '~/components';
+
 
 
 // Root Navigator ////////////////////////////////////////////////////////////
@@ -27,14 +31,19 @@ export default function App() {
       card: theme.color.primary,
       text: theme.color.secondaryText,
       border: 'transparent',
-      notification: theme.color.primary
+      notification: theme.color.primary,
     }
   }
 
   return (
     <NavigationContainer theme={navigationTheme} >
-      <Stack.Navigator initialRouteName='TabNav' headerMode='none' >
-        <Stack.Screen name='TabNav' component={TabNavigator} />
+      <StatusBar style='light' />
+      <Stack.Navigator
+        mode='modal'
+        initialRouteName='TabNav'
+      >
+        <Stack.Screen name='TabNav' component={TabNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name='Settings' component={SettingsScreen} options={{ ...TransitionPresets.ModalPresentationIOS }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -49,9 +58,14 @@ function TabNavigator() {
   return (
     <Tab.Navigator
       initialRouteName='CountersNav'
-      screenOptions={{
-        tabBarIcon: ({ focused, color, size }) => <StarIcon size={size} color={color} />
-      }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => (
+          route.name === 'CountersNav' ?
+            <ListIcon size={size} color={color} /> 
+          : 
+            <TimerIcon size={size} color={color} />  
+        )
+      })}
     >
       <Tab.Screen name='CountersNav' component={CountersNavigator} options={{ title: 'Counters' }} />
       <Tab.Screen name='ConfigNav' component={ConfigNavigator} options={{ title: 'Config' }} />
@@ -62,11 +76,29 @@ function TabNavigator() {
 
 // Counters Navigator ////////////////////////////////////////////////////////////
 
+const ScreenOptions = (theme: ThemeType) => (({ navigation }: {navigation: any}) => ({
+  headerRight: () => (
+    <TouchableOpacity
+      style={{ padding: 20 }}
+      onPress={() => navigation.navigate('Settings')}
+    >
+      <SettingsIcon color={theme.color.secondaryText} />
+    </TouchableOpacity>
+  ),
+  ...TransitionPresets.SlideFromRightIOS
+} as StackNavigationOptions))
+
 const CountersStack = createStackNavigator()
 
 function CountersNavigator() {
+
+  const [theme] = useTheme()
+
   return (
-    <CountersStack.Navigator initialRouteName='Counters' >
+    <CountersStack.Navigator
+      initialRouteName='Counters'
+      screenOptions={ScreenOptions(theme)}
+    >
       <CountersStack.Screen name='Counters' component={CountersScreen} />
     </CountersStack.Navigator>
   )
@@ -78,8 +110,14 @@ function CountersNavigator() {
 const ConfigStack = createStackNavigator()
 
 function ConfigNavigator() {
+
+  const [theme] = useTheme()
+
   return (
-    <ConfigStack.Navigator initialRouteName='Config' >
+    <ConfigStack.Navigator
+      initialRouteName='Config'
+      screenOptions={ScreenOptions(theme)}
+    >
       <ConfigStack.Screen name='Config' component={ConfigScreen} />
     </ConfigStack.Navigator>
   )

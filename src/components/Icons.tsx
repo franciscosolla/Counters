@@ -1,5 +1,5 @@
 import React from 'react'
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 
 
 export interface IconProps {
@@ -20,3 +20,10 @@ export const PlusIcon = (props: IconProps) => <FontAwesome name='plus' { ...defa
 export const MinusIcon = (props: IconProps) => <FontAwesome name='minus' { ...defaultIconProps } { ...props } />
 
 export const ResetIcon = (props: IconProps) => <FontAwesome name='eraser' { ...defaultIconProps } { ...props } />
+
+export const SettingsIcon = (props: IconProps) => <FontAwesome name='gear' { ...defaultIconProps } { ...props } />
+
+export const TimerIcon = (props: IconProps) => <MaterialCommunityIcons name='timer' { ...defaultIconProps } { ...props } />
+
+export const ListIcon = (props: IconProps) => <MaterialCommunityIcons name='menu' { ...defaultIconProps } { ...props } />
+
