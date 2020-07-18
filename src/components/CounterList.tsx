@@ -91,7 +91,11 @@ const Styles = (theme: ThemeType) => StyleSheet.create({
         backgroundColor: theme.color.secondaryBackground,
         padding: 20,
         borderRadius: 5,
-        elevation: 5
+        elevation: 5,
+        shadowColor: 'black',
+        shadowRadius: 2,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.5
     },
     emptyListTitle: {
         textAlign: 'center',

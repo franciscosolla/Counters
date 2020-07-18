@@ -17,6 +17,7 @@ import { StarIcon, SettingsIcon, ListIcon, TimerIcon } from '~/components';
 
 
 import { store, persistor } from '~/store';
+import { sh } from '~/utils';
 
 // Root Navigator ////////////////////////////////////////////////////////////
 
@@ -25,7 +26,7 @@ const Stack = createStackNavigator()
 export default function App() {
 
   const [theme] = useTheme()
-  const [texts] = useTexts('app')
+  const [texts, setTexts, textCode] = useTexts('app')
 
   const navigationTheme = {
     dark: theme.dark,
@@ -49,8 +50,8 @@ export default function App() {
             initialRouteName='TabNav'
           >
             <Stack.Screen name='TabNav' component={TabNavigator} options={{ headerShown: false }} />
-            <Stack.Screen name='Settings' component={SettingsScreen} options={{ title: texts.Settings, ...TransitionPresets.ModalPresentationIOS }} />
-            <Stack.Screen name='Picker' component={PickerScreen} options={{ ...TransitionPresets.ModalPresentationIOS }} />
+            <Stack.Screen name='Settings' component={SettingsScreen} options={{ title: texts.Settings, ...TransitionPresets.ModalPresentationIOS, headerBackTitle: textCode === 'pt' ? 'Voltar' : '' }} />
+            <Stack.Screen name='Picker' component={PickerScreen} options={{ ...TransitionPresets.ModalPresentationIOS, headerBackTitle: textCode === 'pt' ? 'Voltar' : ''}} />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>
@@ -73,14 +74,14 @@ function TabNavigator() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => (
           route.name === 'CountersNav' ?
-            <ListIcon size={size} color={color} /> 
+            <ListIcon size={sh(0.045)} color={color} /> 
           : 
-            <TimerIcon size={size} color={color} />  
+            <TimerIcon size={sh(0.045)} color={color} />  
         )
       } as BottomTabNavigationOptions)}
       tabBarOptions={{
-        style: { height: 80 },
-        tabStyle: { paddingBottom: 35, paddingTop: 10 }
+        style: { height: sh(0.1) },
+        tabStyle: { paddingBottom: sh(0.02), paddingTop: sh(0.01) }
       }}
     >
       <Tab.Screen name='CountersNav' component={CountersNavigator} options={{ title: texts.Counters }} />
@@ -94,11 +95,13 @@ function TabNavigator() {
 
 const ScreenOptions = (theme: ThemeType) => (({ navigation }: {navigation: any}) => ({
   
-  headerStyle: { height: 125 } as ViewStyle,
+  headerStyle: { height: sh(0.15) } as ViewStyle,
   headerTitleStyle: { fontSize: 30, textAlignVertical: 'bottom' } as TextStyle,
-  headerTitleContainerStyle: { alignSelf: 'flex-end', paddingBottom: 10 } as ViewStyle,
+  headerTitleContainerStyle: { alignSelf: 'flex-end', paddingBottom: sh(0.01) } as ViewStyle,
 
-  headerRightContainerStyle: { marginBottom: -40 } as ViewStyle,
+  headerRightContainerStyle: { marginBottom: -sh(0.04) } as ViewStyle,
+
+  headerBackTitle: '',
 
   headerRight: () => (
     <TouchableOpacity
