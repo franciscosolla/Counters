@@ -1,4 +1,4 @@
-package com.counters.generated;
+package br.rpp.counters.generated;
 
 import java.util.Arrays;
 import java.util.List;

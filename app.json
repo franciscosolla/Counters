@@ -3,10 +3,48 @@
   "displayName": "Counters",
   "expo": {
     "name": "Counters",
+    "description": "Counters gives you the ability to create and use counters!",
     "slug": "Counters",
     "version": "1.0.0",
+    "sdkVersion": "38.0.0",
+    "owner": "franciscosolla",
+    "privacy": "public",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "orientation": "portrait",
+    "primaryColor": "#001c47",
+    "icon": "./assets/images/icon.png",
+    "scheme": "counters",
+    "splash": {
+      "backgroundColor": "#001c47",
+      "resizeMode": "contain",
+      "image": "./assets/images/icon.png"
+    },
+    "androidNavigationBar": {
+      "backgroundColor": "#001c47"
+    },
+    "android": {
+      "package": "br.rpp.counters",
+      "versionCode": 1,
+      "permissions": []
+    },
+    "ios": {
+      "bundleIdentifier": "br.rpp.counters",
+      "buildNumber": "1.0.0",
+      "supportsTablet": false,
+      "requireFullScreen": false,
+      "isTabletOnly": false,
+      "infoPlist": {
+        "bundleIdentifier": "br.rpp.reach",
+        "buildNumber": "1.0.0",
+      },
+      "usesAppleSignIn": false,
+      "accessesContactNotes": false,
+    }
   }
 }

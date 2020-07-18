@@ -1,4 +1,4 @@
-package com.counters;
+package br.rpp.counters;
 
 import android.os.Bundle;
 
