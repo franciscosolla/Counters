@@ -2,23 +2,45 @@ import React, { useState, useRef, useEffect } from 'react'
 import { FlatList, View, Text, StyleSheet } from 'react-native'
 import { useNavigation, useFocusEffect } from '@react-navigation/native'
 
+import { Dispatch, Action } from 'redux'
+import { connect } from 'react-redux'
+
 import { useCounters, useSelected, useTheme, useTexts, ThemeType } from '~/hooks'
 
 import CounterView from './CounterView'
 
+export const CounterList = connect(mapStateToProps, mapDispatchToProps)(CounterListComponent)
 export default CounterList
+
+function mapStateToProps(store: any) {
+    return {
+        counters: store.counterState.counters,
+        selected: store.counterState.selected
+    }
+}
+
+function mapDispatchToProps(dispatch: Dispatch<Action>) {
+    return {
+        onSelect: (index: number) => dispatch({ type: 'SELECT_COUNTER_ASYNC', index })
+    }
+}
 
 const ITEM_HEIGHT = 231.5
 
-export function CounterList() {
+interface CounterListProps {
+    
+    counters: { value: number }[]
+    selected: number
+
+    onSelect: (index: number) => void
+}
+
+function CounterListComponent({ counters, selected, onSelect }: CounterListProps) {
 
     const [theme] = useTheme()
     const styles = Styles(theme)
 
     const [texts] = useTexts('components/CounterList')
-
-    const [counters] = useCounters()
-    const [selected, setSelected] = useSelected()
 
     const listRef = useRef<FlatList>(null)
 
@@ -46,7 +68,7 @@ export function CounterList() {
                     counter={item}
                     index={index}
                     isSelected={selected === index}
-                    onSelection={setSelected}
+                    onSelection={onSelect}
                 />
             )}
             ListEmptyComponent={(

@@ -3,6 +3,7 @@ import { enableScreens } from 'react-native-screens';
 enableScreens();
 
 import React from 'react';
+import { Provider } from 'react-redux'
 import { TouchableOpacity, ViewStyle, TextStyle, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationOptions, TransitionPresets } from '@react-navigation/stack';
@@ -14,6 +15,7 @@ import { useTheme, ThemeType, useTexts } from '~/hooks';
 import { StarIcon, SettingsIcon, ListIcon, TimerIcon } from '~/components';
 
 
+import { store } from '~/store';
 
 // Root Navigator ////////////////////////////////////////////////////////////
 
@@ -37,17 +39,19 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer theme={navigationTheme} >
-      <StatusBar style='light' />
-      <Stack.Navigator
-        mode='modal'
-        initialRouteName='TabNav'
-      >
-        <Stack.Screen name='TabNav' component={TabNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name='Settings' component={SettingsScreen} options={{ title: texts.Settings, ...TransitionPresets.ModalPresentationIOS }} />
-        <Stack.Screen name='Picker' component={PickerScreen} options={{ ...TransitionPresets.ModalPresentationIOS }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store} >
+      <NavigationContainer theme={navigationTheme} >
+        <StatusBar style='light' />
+        <Stack.Navigator
+          mode='modal'
+          initialRouteName='TabNav'
+        >
+          <Stack.Screen name='TabNav' component={TabNavigator} options={{ headerShown: false }} />
+          <Stack.Screen name='Settings' component={SettingsScreen} options={{ title: texts.Settings, ...TransitionPresets.ModalPresentationIOS }} />
+          <Stack.Screen name='Picker' component={PickerScreen} options={{ ...TransitionPresets.ModalPresentationIOS }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   )
 }
 

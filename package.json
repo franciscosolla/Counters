@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
+    "@react-native-community/async-storage": "~1.11.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.7.1",
     "@react-navigation/native": "^5.7.0",
@@ -26,8 +27,11 @@
     "react-native-screens": "~2.9.0",
     "react-native-unimodules": "~0.10.0",
     "react-native-web": "~0.11.7",
-    "rxjs": "^6.6.0",
-    "@react-native-community/async-storage": "~1.11.0"
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.3",
+    "rxjs": "^6.6.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
@@ -36,6 +40,8 @@
     "@types/react": "~16.9.23",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.61.23",
+    "@types/react-redux": "^7.1.9",
+    "@types/redux-logger": "^3.0.8",
     "babel-preset-expo": "~8.2.0",
     "jest": "^26.1.0",
     "jest-expo": "^38.0.2",
