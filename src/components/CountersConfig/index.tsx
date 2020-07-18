@@ -12,7 +12,7 @@ export function CountersConfig() {
 
     const [texts] = useTexts('components/CountersConfig')
 
-    const [_, addCounter, removeCounter] = useCounters()
+    const [counters, actions] = useCounters()
 
     return (
         <View style={styles.container} >
@@ -22,9 +22,9 @@ export function CountersConfig() {
             </Text>
 
             <View style={styles.buttonsContainer} >
-                <Button text={texts.add} onPress={addCounter} />
+                <Button text={texts.add} onPress={actions.addCounter} />
                 <View style={{ flex: 1 }} />
-                <Button text={texts.remove} onPress={removeCounter} />
+                <Button text={texts.remove} onPress={actions.removeCounter} />
             </View>
             
         </View>

@@ -18,7 +18,7 @@ function setCOUNTERS(newValue: Counter[], save: boolean = true) {
     if (save) AsyncStorage.setItem('@user/counters', JSON.stringify(newValue))
 }
 
-export function useCounters(): [Counter[], typeof addCounter, typeof removeCounter, typeof incrementSelected, typeof decrementSelected, typeof resetSelected] {
+export function useCounters(): [Counter[], typeof actions, number] {
 
     const [counters, setCounters] = useState(COUNTERS.value)
     const [selected, setSelected] = useSelected()
@@ -44,7 +44,7 @@ export function useCounters(): [Counter[], typeof addCounter, typeof removeCount
 
     const incrementSelected = () => {
         if (counters.length > selected && counters[selected].value < 9999) {
-            counters[selected].value++
+            counters[selected].value = counters[selected].value + 1
             setCOUNTERS([...counters])
         }
     }
@@ -63,12 +63,17 @@ export function useCounters(): [Counter[], typeof addCounter, typeof removeCount
         }
     }
 
-    return [
-        counters,
+    const actions = {
         addCounter,
         removeCounter,
         incrementSelected,
         decrementSelected,
         resetSelected
+    }
+
+    return [
+        counters,
+        actions,
+        selected
     ]
 }

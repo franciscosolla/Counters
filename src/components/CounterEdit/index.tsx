@@ -15,7 +15,7 @@ export function CounterEdit() {
 
     const [texts] = useTexts('components/CounterEdit')
 
-    const [counters, a, r, increment, decrement, reset] = useCounters()
+    const [counters, actions] = useCounters()
     const [selected] = useSelected()
 
     if (!counters.length) return null
@@ -36,20 +36,20 @@ export function CounterEdit() {
 
             <View style={styles.actionContainer} >
                 
-                <TouchableOpacity style={[styles.actionButton, { flex: 10 }]} onPress={reset} >
+                <TouchableOpacity style={[styles.actionButton, { flex: 10 }]} onPress={actions.resetSelected} >
                     <Text style={styles.actionTitle} >{texts.reset}</Text>
                     <ResetIcon color={theme.color.quaternaryText} />
                 </TouchableOpacity>
 
                 <View style={{ flex: 3 }} />
 
-                <TouchableOpacity style={styles.actionButton} onPress={decrement} >
+                <TouchableOpacity style={styles.actionButton} onPress={actions.decrementSelected} >
                     <MinusIcon color={theme.color.quaternaryText} />
                 </TouchableOpacity>
 
                 <View style={{ flex: 1 }} />
 
-                <TouchableOpacity style={styles.actionButton} onPress={increment} >
+                <TouchableOpacity style={styles.actionButton} onPress={actions.incrementSelected} >
                     <PlusIcon color={theme.color.quaternaryText} />
                 </TouchableOpacity>
 
