@@ -65,7 +65,11 @@ const Styles = (theme: ThemeType) => StyleSheet.create({
         borderRadius: 5,
         backgroundColor: theme.color.secondaryBackground,
         padding: 20,
-        elevation: 5
+        elevation: 5,
+        shadowColor: 'black',
+        shadowRadius: 2,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.5
     },
     optionTitle: {
         flex: 1,

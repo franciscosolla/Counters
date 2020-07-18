@@ -85,7 +85,11 @@ const Styles = (theme: ThemeType) => StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         alignItems: 'center',
-        elevation: 5
+        elevation: 5,
+        shadowColor: 'black',
+        shadowRadius: 2,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.5
     },
     actionTitle: {
         color: theme.color.quaternaryText,

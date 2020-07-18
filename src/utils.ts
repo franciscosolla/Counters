@@ -1,3 +1,19 @@
+import { Dimensions } from "react-native";
+
+export function sw(percent: number) {
+    return Math.round(Dimensions.get('screen').width*percent)
+}
+
+export function sh(percent: number) {
+    return Math.round(Dimensions.get('screen').height*percent)
+}
+
+export function ss(percent: number) {
+    const dimensions = Dimensions.get('screen')
+    return dimensions.width < dimensions.height ? Math.round(dimensions.width*percent) : Math.round(dimensions.height*percent)
+}
+
+
 const aux: any = {
 
 }
