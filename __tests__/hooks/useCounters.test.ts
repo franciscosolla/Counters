@@ -2,7 +2,8 @@ import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks'
 
 import { useCounters, useSelected } from '~/hooks'
 
-function trasnformHookResult<P>({ result }: RenderHookResult<P, ReturnType<(typeof useCounters)>>) {
+export function useCountersRender() {
+    const { result } = renderHook(() => useCounters())
     return ({
         current: {
             get counters() {
@@ -21,12 +22,12 @@ function trasnformHookResult<P>({ result }: RenderHookResult<P, ReturnType<(type
 describe('useCounters should', () => {
 
     it('start with an empty array', () => {
-        const { current } = trasnformHookResult(renderHook(() => useCounters()))
+        const { current } = useCountersRender()
         expect(current.counters).toEqual([])
     })
 
     it('be able to add counters at the end of array, with value = 0', () => {
-        const { current } = trasnformHookResult(renderHook(() => useCounters()))
+        const { current } = useCountersRender()
         act(() => {
             current.actions.addCounter()
         })
@@ -35,7 +36,7 @@ describe('useCounters should', () => {
     })
 
     it('be able to increment the value on the selected counter', () => {
-        const { current } = trasnformHookResult(renderHook(() => useCounters()))
+        const { current } = useCountersRender()
         const previousValue = current.counters[current.selected].value
         act(() => {
             current.actions.incrementSelected()
@@ -44,7 +45,7 @@ describe('useCounters should', () => {
     })
 
     it('be able to decrement the value on the selected counter', () => {
-        const { current } = trasnformHookResult(renderHook(() => useCounters()))
+        const { current } = useCountersRender()
         const previousValue = current.counters[current.selected].value
         act(() => {
             current.actions.decrementSelected()
@@ -53,7 +54,7 @@ describe('useCounters should', () => {
     })
 
     it('be able to reset the value on the selected counter', () => {
-        const { current } = trasnformHookResult(renderHook(() => useCounters()))
+        const { current } = useCountersRender()
         act(() => {
             current.actions.resetSelected()
         })
@@ -61,7 +62,7 @@ describe('useCounters should', () => {
     })
 
     it('be able to remove the selected counter', () => {
-        const { current } = trasnformHookResult(renderHook(() => useCounters()))
+        const { current } = useCountersRender()
         const previousLength = current.counters.length
         const selectedCounter = current.counters[current.selected]
         act(() => {

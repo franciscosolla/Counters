@@ -1,8 +1,9 @@
 import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks'
 
-import { useTexts } from '~/hooks'
+import { useTexts, TextsKeys } from '~/hooks'
 
-function trasnformHookResult<P>({ result }: RenderHookResult<P, ReturnType<(typeof useTexts)>>) {
+export function useTextsRender<T extends TextsKeys>(key: T) {
+    const { result } = renderHook(() => useTexts(key))
     return ({
         current: {
             get texts() {
@@ -21,7 +22,7 @@ function trasnformHookResult<P>({ result }: RenderHookResult<P, ReturnType<(type
 describe('useTexts should', () => {
 
     it('change value to the setted one', () => {
-        const { current } = trasnformHookResult(renderHook(() => useTexts('components/CounterView')))
+        const { current } = useTextsRender('components/CounterView')
         act(() => {
             current.setTexts('pt')
         })

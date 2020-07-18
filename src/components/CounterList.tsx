@@ -17,8 +17,6 @@ export function CounterList() {
 
     const [texts] = useTexts('components/CounterList')
 
-    const navigation = useNavigation()
-
     const [counters] = useCounters()
     const [selected, setSelected] = useSelected()
 
@@ -48,7 +46,7 @@ export function CounterList() {
                     counter={item}
                     index={index}
                     isSelected={selected === index}
-                    onSelection={setSelected} 
+                    onSelection={setSelected}
                 />
             )}
             ListEmptyComponent={(
