@@ -1,11 +1,8 @@
 import 'react-native';
 import React from 'react';
 
-import { act } from 'react-test-renderer';
+import { render, fireEvent, createTestStore } from 'jest/test-utils';
 
-import { render, fireEvent } from 'react-native-testing-library';
-
-import { useCountersRender } from '../hooks/useCounters.test';
 import { useTextsRender } from '../hooks/useTexts.test';
 
 
@@ -19,16 +16,19 @@ describe('CounterEdit should', () => {
 
     it('be able to increment selected counter and show updated value', () => {
 
-        const c = useCountersRender()
         const t = useTextsRender('components/CounterEdit')
 
-        if (c.current.counters.length === 0) {
-            act(() => {
-                c.current.actions.addCounter()
-            })
-        }
-
-        const { getByText, getByA11yLabel } = render(<CounterEdit />)
+        const { getByText, getByA11yLabel } = render(
+            <CounterEdit />,
+            {
+                initialState: {
+                    counterState: {
+                        counters: [{ value: 0 }],
+                        selected: 0
+                    }
+                }
+            }
+        )
 
         let previousValue = parseInt(getByText(/\d\d\d\d/).instance.props?.children)
 
@@ -39,22 +39,19 @@ describe('CounterEdit should', () => {
 
     it('be able to decrement selected counter and show updated value', () => {
 
-        const c = useCountersRender()
         const t = useTextsRender('components/CounterEdit')
 
-        if (c.current.counters.length === 0) {
-            act(() => {
-                c.current.actions.addCounter()
-            })
-        }
-
-        if (c.current.counters[c.current.selected].value === 0) {
-            act(() => {
-                c.current.actions.incrementSelected()
-            })
-        }
-
-        const { getByText, getByA11yLabel } = render(<CounterEdit />)
+        const { getByText, getByA11yLabel } = render(
+            <CounterEdit />,
+            {
+                initialState: {
+                    counterState: {
+                        counters: [{ value: 10 }],
+                        selected: 0
+                    }
+                }
+            }
+        )
 
         let previousValue = parseInt(getByText(/\d\d\d\d/).instance.props?.children)
 
@@ -65,22 +62,19 @@ describe('CounterEdit should', () => {
 
     it('be able to reset the selected counter value an show updated value', () => {
 
-        const c = useCountersRender()
         const t = useTextsRender('components/CounterEdit')
 
-        if (c.current.counters.length === 0) {
-            act(() => {
-                c.current.actions.addCounter()
-            })
-        }
-
-        if (c.current.counters[c.current.selected].value === 0) {
-            act(() => {
-                c.current.actions.incrementSelected()
-            })
-        }
-
-        const { getByText } = render(<CounterEdit />)
+        const { getByText } = render(
+            <CounterEdit />,
+            {
+                initialState: {
+                    counterState: {
+                        counters: [{ value: 10 }],
+                        selected: 0
+                    }
+                }
+            }
+        )
 
         expect(parseInt(getByText(/\d\d\d\d/).instance.props?.children)).not.toEqual(0)
 
@@ -91,21 +85,21 @@ describe('CounterEdit should', () => {
 
     it('be in sync with the counters shown in the CounterList component', () => {
         
-        const c = useCountersRender()
         const t = {
             CounterEdit: useTextsRender('components/CounterEdit'),
             CounterView: useTextsRender('components/CounterView')
         } 
 
-        while(c.current.counters.length < 2) {
-            act(() => {
-                c.current.actions.addCounter()
-            })
-        }
+        const store = createTestStore({
+            counterState: {
+                counters: [{ value: 10 }, { value: 32 }],
+                selected: 1
+            }
+        })
 
-        const inCounterEdit = render(<CounterEdit />)
+        const inCounterEdit = render(<CounterEdit />, { store })
         
-        const inCounterList = render(<CounterList />)
+        const inCounterList = render(<CounterList />, { store })
 
         // test equality before operations
 

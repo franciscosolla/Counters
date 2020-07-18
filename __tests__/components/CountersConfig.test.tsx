@@ -1,71 +1,69 @@
 import 'react-native';
 import React from 'react';
 
-import { act } from 'react-test-renderer';
-
-import { render, fireEvent } from 'react-native-testing-library';
-
+import { render, fireEvent, createTestStore } from 'jest/test-utils';
 
 import { CountersConfig, CounterList } from '~/components'
 import { useTextsRender } from '../hooks/useTexts.test';
-import { useCountersRender } from '../hooks/useCounters.test';
 
 import { useFocusEffect } from '@react-navigation/native'
 jest.mock('@react-navigation/native')
+
 
 describe('CountersConfig should', () => {
 
     it('be able to add new counters, and they should appear in the CounterList component', () => {
 
-        const c = useCountersRender()
         const t = useTextsRender('components/CountersConfig')
-
-        let previousCounters = c.current.counters
 
         const t2 = useTextsRender('components/CounterView')
 
-        const { getAllByText } = render(<CounterList />)
+        const store = createTestStore({
+            counterState: {
+                counters: [],
+                selected: 0
+            }
+        })
+
+        const CounterListEl = <CounterList />
+        const { queryAllByText, rerender } = render(CounterListEl, { store })
 
         const counterTitle = new RegExp(`^${t2.current.texts.title}\\d*$`)
 
-        let previousList = c.current.counters.length > 0 ? getAllByText(counterTitle) : []
+        let previousList = queryAllByText(counterTitle)
 
-        const { getByText } = render(<CountersConfig />)
+        const { getByText } = render(<CountersConfig />, { store })
 
         fireEvent.press(getByText(t.current.texts.add))
+        rerender(CounterListEl)
 
-        expect(c.current.counters.length).toBe(previousCounters.length+1)
-
-        expect(getAllByText(counterTitle).length).toBe(previousList.length+1)
+        expect(queryAllByText(counterTitle).length).toBe(previousList.length+1)
 
     })
 
     it('be able to remove counters, and they should desappear from the CounterList component', async () => {
 
-        const c = useCountersRender()
+        const store = createTestStore({
+            counterState: {
+                counters: [{ value: 2 }, { value: 0 }],
+                selected: 0
+            }
+        })
 
         const t = useTextsRender('components/CountersConfig')
-        const { getByText } = render(<CountersConfig />)
+        const { getByText } = render(<CountersConfig />, { store })
 
         const t2 = useTextsRender('components/CounterView')
-        const { getAllByText } = render(<CounterList />)
-        
-        while (c.current.counters.length < 2) {
-            fireEvent.press(getByText(t.current.texts.add))
-        }
-
-        let previousCountersLength = c.current.counters.length
-
-        expect(previousCountersLength).toBeGreaterThanOrEqual(1)
+        const { queryAllByText } = render(<CounterList />, { store })
 
         const counterTitle = new RegExp(`^${t2.current.texts.title}\\d*$`)
 
-        let previousList = getAllByText(counterTitle)
+        let previousCountersLength = queryAllByText(counterTitle).length
+
+        expect(previousCountersLength).toEqual(2)
 
         fireEvent.press(getByText(t.current.texts.remove))
 
-        expect(c.current.counters.length).toBe(previousCountersLength-1)
-
-        expect(getAllByText(counterTitle).length).toBe(previousList.length-1)
+        expect(queryAllByText(counterTitle).length).toBe(previousCountersLength-1)
     })
 })
