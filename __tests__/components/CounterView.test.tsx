@@ -3,7 +3,7 @@ import React from 'react';
 
 import renderer from 'react-test-renderer';
 
-import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react-hooks'
 
 import { useTexts } from '~/hooks'
 

@@ -3,7 +3,7 @@ import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks'
 import { useCounters, useSelected } from '~/hooks'
 
 export function useCountersRender() {
-    const { result } = renderHook(() => useCounters())
+    const { result, ...others } = renderHook(() => useCounters())
     return ({
         current: {
             get counters() {
@@ -15,7 +15,9 @@ export function useCountersRender() {
             get selected() {
                 return result.current[2]
             }
-        }
+        },
+
+        ...others
     })
 }
 

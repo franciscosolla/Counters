@@ -1,10 +1,9 @@
 import 'react-native';
 import React from 'react';
 
-import renderer, { act } from 'react-test-renderer';
+import { act } from 'react-test-renderer';
 
-import { render, fireEvent } from 'react-native-testing-library';
-import { renderHook } from '@testing-library/react-hooks';
+import { render } from 'react-native-testing-library';
 
 import { CounterList } from '~/components'
 
@@ -13,8 +12,6 @@ jest.mock('@react-navigation/native')
 
 import { useCountersRender } from '../hooks/useCounters.test'
 import { useTextsRender } from '../hooks/useTexts.test'
-
-import { useCounters, useTexts } from '~/hooks';
 
 describe('CounterList should', () => {
 
