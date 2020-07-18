@@ -13,52 +13,61 @@ jest.mock('@react-navigation/native')
 import { useCountersRender } from '../hooks/useCounters.test'
 import { useTextsRender } from '../hooks/useTexts.test'
 
+import { langs } from '~/hooks';
+
+
 describe('CounterList should', () => {
 
     it('show new counters in the list when counters are added', () => {
 
-        const { current } = useCountersRender()
+        const c = useCountersRender()
+        const t = useTextsRender('components/CounterView')
         
         const element = <CounterList />
 
-        const { getAllByText, rerender } = render(element)
+        const { queryAllByText, rerender } = render(element)
 
-        let previousList = current.counters.length > 0 ? getAllByText(/^Counter \d*$|^Contador \d*$/) : []
+        const counterTitle = new RegExp(`^${t.current.texts.title}\\d$`)
+
+        let previousList = queryAllByText(counterTitle)
 
         act(() => {
-            current.actions.addCounter()
+            c.current.actions.addCounter()
         })
 
-        let newList = getAllByText(/^Counter \d*$|^Contador \d*$/)
+        let newList = queryAllByText(counterTitle)
 
         expect(newList.length).toBe(previousList.length+1)
     });
 
     it('remove counters from the list when counters are removed', () => {
 
-        const { current } = useCountersRender()
+        const c = useCountersRender()
+        const t = useTextsRender('components/CounterView')
         
         const element = <CounterList />
 
-        const { getAllByText, rerender } = render(element)
+        const { queryAllByText, rerender } = render(element)
 
-        let previousList = current.counters.length > 0 ? getAllByText(/^Counter \d*$|^Contador \d*$/) : []
+        const counterTitle = new RegExp(`^${t.current.texts.title}\\d$`)
+
+        let previousList = queryAllByText(counterTitle)
 
         if (previousList.length < 2) {
             act(() => {
-                current.actions.addCounter()
+                c.current.actions.addCounter()
             })
             act(() => {
-                current.actions.addCounter()
+                c.current.actions.addCounter()
             })
-            previousList = current.counters.length > 0 ? getAllByText(/^Counter \d*$|^Contador \d*$/) : []
+            previousList = queryAllByText(counterTitle)
         }
 
         act(() => {
-            current.actions.removeCounter()
+            c.current.actions.removeCounter()
         })
         
-        let newList = current.counters.length > 0 ? getAllByText(/^Counter \d*$|^Contador \d*$/) : []
+        let newList = queryAllByText(counterTitle)
 
         expect(newList.length).toBe(previousList.length-1)
     });
@@ -82,13 +91,13 @@ describe('CounterList should', () => {
             t.current.setTexts('pt')
         })
 
-        getAllByText(/^Contador \d*$/)
+        getAllByText(new RegExp(`^${langs.pt["components/CounterView"].title}\\d$`))
 
         act(() => {
             t.current.setTexts('en')
         })
 
-        getAllByText(/^Counter \d*$/)
+        getAllByText(new RegExp(`^${langs.en["components/CounterView"].title}\\d$`))
     })
 
     it('show the empty component when there\'s no counters', () => {
@@ -102,7 +111,7 @@ describe('CounterList should', () => {
             })
         }
 
-        const { getAllByText, rerender } = render(<CounterList />)
+        const { getAllByText } = render(<CounterList />)
 
         getAllByText(t.current.texts.emptyListTitle)
     })

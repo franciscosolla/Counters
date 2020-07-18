@@ -23,7 +23,10 @@ const en = {
 
     'components/CounterEdit': {
         title: 'Selected Counter',
-        reset: 'Reset'
+        reset: 'Reset',
+        allyLabel: 'Selected Counter Editing Panel',
+        a11yIncrement: 'Increment value on selected counter',
+        a11yDecrement: 'Decrement value on selected counter'
     },
 
     'components/CountersConfig': {
@@ -33,7 +36,9 @@ const en = {
     },
 
     'components/CounterView': {
-        title: 'Counter '
+        title: 'Counter ',
+        a11ySelected: 'Selected Counter',
+        a11yUnselected: 'Not Selected Counter'
     },
 
     'components/CounterList': {

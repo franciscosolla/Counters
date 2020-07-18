@@ -21,7 +21,7 @@ export function CounterEdit() {
     if (!counters.length) return null
 
     return (
-        <View style={styles.container} >
+        <View style={styles.container} accessibilityLabel={texts.allyLabel} >
 
             <Text style={styles.title} >
                 {texts.title}
@@ -43,13 +43,13 @@ export function CounterEdit() {
 
                 <View style={{ flex: 3 }} />
 
-                <TouchableOpacity style={styles.actionButton} onPress={actions.decrementSelected} >
+                <TouchableOpacity style={styles.actionButton} onPress={actions.decrementSelected} accessibilityLabel={texts.a11yDecrement} >
                     <MinusIcon color={theme.color.quaternaryText} />
                 </TouchableOpacity>
 
                 <View style={{ flex: 1 }} />
 
-                <TouchableOpacity style={styles.actionButton} onPress={actions.incrementSelected} >
+                <TouchableOpacity style={styles.actionButton} onPress={actions.incrementSelected} accessibilityLabel={texts.a11yIncrement} >
                     <PlusIcon color={theme.color.quaternaryText} />
                 </TouchableOpacity>
 

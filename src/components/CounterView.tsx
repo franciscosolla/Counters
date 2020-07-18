@@ -1,11 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, StyleProp, ViewStyle } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, StyleProp, ViewStyle, ViewProps, TouchableOpacityProps } from 'react-native'
 
 import { Counter, useTheme, ThemeType, useTexts } from '~/hooks'
 
 export default CounterView
 
-interface CounterProps {
+interface CounterProps extends Omit<TouchableOpacityProps, 'style' | 'onPress' | 'disabled'> {
     counter: Counter,
     index: number,
     isSelected: boolean,
@@ -14,7 +14,7 @@ interface CounterProps {
     containerStyle?: StyleProp<ViewStyle>
 }
 
-export function CounterView({ counter, index, isSelected, onSelection, containerStyle }: CounterProps) {
+export function CounterView({ counter, index, isSelected, onSelection, containerStyle, ...props }: CounterProps) {
 
     const [theme] = useTheme()
     const styles = Styles(theme)
@@ -26,6 +26,8 @@ export function CounterView({ counter, index, isSelected, onSelection, container
             style={[styles.container, containerStyle, isSelected ? undefined : { opacity: 0.4, borderColor: 'transparent' }]}
             onPress={() => onSelection && onSelection(index)}
             disabled={isSelected}
+            accessibilityLabel={isSelected ? texts.a11ySelected : texts.a11yUnselected}
+            {...props}
         >
             
             <Text style={[styles.title, isSelected ? undefined : { color: theme.color.text }]} >

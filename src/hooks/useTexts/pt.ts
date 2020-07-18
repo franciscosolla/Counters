@@ -23,7 +23,10 @@ const ptbr = {
 
     'components/CounterEdit': {
         title: 'Contador Selecionado',
-        reset: 'Reiniciar'
+        reset: 'Reiniciar',
+        allyLabel: 'Painel de Edição do Contador Selecionado',
+        a11yIncrement: 'Incrementar valor do contador selecionado',
+        a11yDecrement: 'Decrementar valor do contador selecionado'
     },
 
     'components/CountersConfig': {
@@ -33,7 +36,9 @@ const ptbr = {
     },
 
     'components/CounterView': {
-        title: 'Contador '
+        title: 'Contador ',
+        a11ySelected: 'Contador Selecionado',
+        a11yUnselected: 'Contador Não Selecionado'
     },
 
     'components/CounterList': {
