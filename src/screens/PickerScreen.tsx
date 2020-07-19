@@ -50,7 +50,12 @@ const Styles = (theme: ThemeType) => StyleSheet.create({
         backgroundColor: theme.color.secondaryBackground,
         margin: 10,
         padding: 15,
-        borderRadius: 10
+        borderRadius: 10,
+        elevation: 5,
+        shadowColor: 'black',
+        shadowRadius: 2,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.5
     },
     itemText: {
         color: theme.color.quaternaryText,
