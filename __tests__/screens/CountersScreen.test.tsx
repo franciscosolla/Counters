@@ -7,9 +7,6 @@ import { render } from 'react-native-testing-library';
 
 import { CountersScreen } from '~/screens'
 
-import { useFocusEffect } from '@react-navigation/native'
-jest.mock('@react-navigation/native')
-
 import { useCountersRender } from '../hooks/useCounters.test'
 import { useTextsRender } from '../hooks/useTexts.test'
 

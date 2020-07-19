@@ -1,17 +1,13 @@
 import 'react-native';
 import React from 'react';
 
-import { act } from 'react-test-renderer';
-
 import { render, fireEvent } from 'react-native-testing-library';
 
-
 import { CountersConfig, CounterList } from '~/components'
+
 import { useTextsRender } from '../hooks/useTexts.test';
 import { useCountersRender } from '../hooks/useCounters.test';
 
-import { useFocusEffect } from '@react-navigation/native'
-jest.mock('@react-navigation/native')
 
 describe('CountersConfig should', () => {
 

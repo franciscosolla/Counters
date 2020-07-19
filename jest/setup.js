@@ -22,3 +22,10 @@ jest.mock('react-native-screens', () => {
 import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock';
 
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage);
+
+import changeNavigationBarColor from 'react-native-navigation-bar-color'
+
+jest.mock('react-native-navigation-bar-color')
+
+import { useFocusEffect } from '@react-navigation/native'
+jest.mock('@react-navigation/native')

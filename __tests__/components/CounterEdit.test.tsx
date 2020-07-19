@@ -5,14 +5,10 @@ import { act } from 'react-test-renderer';
 
 import { render, fireEvent } from 'react-native-testing-library';
 
-import { useCountersRender } from '../hooks/useCounters.test';
-import { useTextsRender } from '../hooks/useTexts.test';
-
-
 import { CounterEdit, CounterList } from '~/components';
 
-import { useFocusEffect } from '@react-navigation/native'
-jest.mock('@react-navigation/native')
+import { useCountersRender } from '../hooks/useCounters.test';
+import { useTextsRender } from '../hooks/useTexts.test';
 
 
 describe('CounterEdit should', () => {
