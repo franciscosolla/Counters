@@ -6,7 +6,7 @@
     "web": "expo start --web",
     "start": "react-native start",
     "test": "jest",
-    "publish": "expo publish --release-channel looks"
+    "expo-publish": "expo publish --release-channel looks"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
