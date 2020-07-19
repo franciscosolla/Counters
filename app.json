@@ -18,22 +18,23 @@
     ],
     "orientation": "portrait",
     "primaryColor": "#001c47",
-    "icon": "./assets/images/icon.png",
     "scheme": "counters",
     "splash": {
       "backgroundColor": "#001c47",
       "resizeMode": "contain",
-      "image": "./assets/images/icon.png"
+      "image": "./assets/images/icon.android.png"
     },
     "androidNavigationBar": {
       "backgroundColor": "#001c47"
     },
     "android": {
+      "icon": "./assets/images/icon.android.png",
       "package": "br.rpp.counters",
       "versionCode": 1,
       "permissions": []
     },
     "ios": {
+      "icon": "./assets/images/icon.ios.png",
       "bundleIdentifier": "br.rpp.counters",
       "buildNumber": "1.0.0",
       "supportsTablet": false,
@@ -41,10 +42,10 @@
       "isTabletOnly": false,
       "infoPlist": {
         "bundleIdentifier": "br.rpp.reach",
-        "buildNumber": "1.0.0",
+        "buildNumber": "1.0.0"
       },
       "usesAppleSignIn": false,
-      "accessesContactNotes": false,
+      "accessesContactNotes": false
     }
   }
 }
