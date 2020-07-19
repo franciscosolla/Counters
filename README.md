@@ -9,11 +9,10 @@ Foi desenvolvido de forma a ser compativel com ambos Expo Cli e React Native pur
 
 Para rodar o app em **debug** pode-se utilizar tanto `expo start` quanto `npx react-native run-android`.
 
-Apesar de ser possível gerar arquivos **release** com o expo através do comando `expo build:android` e `expo build:ios`, estas versões não incluirão a funcionalidade de mudar a cor de fundo da barra de navegação android através da opção de tema.
+Para construir os arquivos **release** (standalone), só é possível através do React Native puro, `cd android | ./gradlew bundleRelease` ou `cd android | ./gradlew asemmbleRelease` para android. Não foi possível configurar e testar builds **release** nativos iOS pela falta de um MacOS a disposição.
+> Este projeto **NÃO** é compativel com Expo Build, isto é `expo build:android` e `expo build:ios`.
 
-Recomendo que sempre gere o **release** utilizando os códigos nativos, `cd android | ./gradlew bundleRelease` ou `cd android | ./gradlew asemmbleRelease` para android.
-
-A escolha de suportar paralelamente a plataforma Expo se deu também pela indisponibilidade de um MacOS para testar o aplicativo em dispositivos iOS. Já que o Expo permite rodar o aplicativo através do Expo Client, sem fazer uma build nativa iOS.
+A escolha de suportar paralelamente a plataforma Expo para testes (debug), se deu também pela indisponibilidade de um MacOS para testar o aplicativo em dispositivos iOS. Já que o Expo permite rodar o aplicativo através do Expo Client, sem fazer uma build nativa iOS.
 
 Além disso o Expo provê automaticamente funcionalidades interessantes, como o OTA, Over-The-Air Updates, que permite atualizar o bundle javascript do app sem publicar um novo binário nas lojas de aplicativos.
 
