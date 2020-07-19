@@ -41,5 +41,5 @@ Algumas builds deste aplicativo estão disponiveis através do link:
 - https://drive.google.com/drive/folders/1adxQ0lSD-ljLsQc1tpv9pp5wIvJfDEno?usp=sharing
 
 Recomendo o apk gerado através do React Native puro na branch master:
-- https://drive.google.com/file/d/1s_6IJeXmpFg6WyyN38i5F9IJeZ2nxu6c/view?usp=sharing
-- https://github.com/franciscosolla/Counters/releases/tag/react-native-v1.0
+- https://drive.google.com/file/d/1RhW40eOaVwuURxfmWS_zdRvR1PZqc6b8/view?usp=sharing
+- https://github.com/franciscosolla/Counters/releases/tag/react-native-v1.1
