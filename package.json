@@ -5,7 +5,8 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "publish": "expo publish --release-channel redux"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
