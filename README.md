@@ -24,7 +24,9 @@ https://drive.google.com/file/d/1s_6IJeXmpFg6WyyN38i5F9IJeZ2nxu6c/view?usp=shari
 O repositório contém duas branchs: master e redux:
 
 - A branch **master** implementa os estados do app com hooks costumizados.
+    > https://github.com/franciscosolla/Counters/tree/master
 - A branch **redux** implementa os estados do app com Redux e Redux Saga
+    > https://github.com/franciscosolla/Counters/tree/redux
 
 As duas branchs implementam um aplicativo que permite criar "contadores" e gerencia-los através de ações de "adicionar contador", "remover contador", "selecionar contador", "incremenar contador selecionado", "decrementar contador selecionado", "reiniciar contador selecionado".
 
