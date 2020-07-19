@@ -5,7 +5,7 @@
     "name": "Counters",
     "description": "Counters gives you the ability to create and use counters!",
     "slug": "Counters",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "sdkVersion": "38.0.0",
     "owner": "franciscosolla",
     "privacy": "public",
@@ -30,7 +30,7 @@
     "android": {
       "icon": "./assets/images/icon.android.png",
       "package": "br.rpp.counters",
-      "versionCode": 1,
+      "versionCode": 2,
       "permissions": []
     },
     "ios": {
@@ -42,7 +42,7 @@
       "isTabletOnly": false,
       "infoPlist": {
         "bundleIdentifier": "br.rpp.reach",
-        "buildNumber": "1.0.0"
+        "buildNumber": "1.1.0"
       },
       "usesAppleSignIn": false,
       "accessesContactNotes": false
