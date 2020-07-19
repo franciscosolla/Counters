@@ -5,10 +5,13 @@ import { BehaviorSubject } from 'rxjs'
 const SELECTED = new BehaviorSubject<number>(0)
 
 AsyncStorage.getItem('@user/selected').then(selected => {
-    if (selected) SELECTED.next(JSON.parse(selected))
+    if (selected) setSELECTED(JSON.parse(selected), false)
 })
 
-// Not saving persistently yet
+function setSELECTED(newValue: number, save: boolean = true) {
+    SELECTED.next(newValue)
+    if (save) AsyncStorage.setItem('@user/selected', JSON.stringify(newValue))
+}
 
 export function useSelected(): [number, (index: number) => void] {
 
@@ -21,8 +24,6 @@ export function useSelected(): [number, (index: number) => void] {
 
     return [
         selected, 
-        (index: number) => {
-            SELECTED.next(index)
-        }
+        setSELECTED
     ]
 }
