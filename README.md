@@ -1,9 +1,11 @@
 ![Counters App Icon](https://drive.google.com/uc?export=view&id=18loPwcAHDr_6mRNr1ai49KZRpaPVjJmp )
 #  Counters 
 
-Neste repositorio você encontra o código de um app demo em React Native. Feito como estudo e demonstração da implementação de diferentes estruturas comunmente encontradas em apps desenvolvidos com React Native.
+Neste repositorio você encontra o código de um app demo em React Native. Feito como estudo e demonstração da implementação de diferentes estruturas comumente encontradas em apps desenvolvidos com React Native.
 
-Foi desenvolvido de forma que possa ser testado através do Expo e React Native. Isto foi feito visando agilizar o desenvolvimento do aplicativo utilizando o Expo mas sem perder a flexibilidade e controle fornecida pelo React Native puro.
+Foi desenvolvido de forma a ser compativel com ambos Expo Cli e React Native puro, paralelamente. Isto foi feito visando agilizar o desenvolvimento do aplicativo utilizando o Expo mas sem perder a flexibilidade e controle fornecida pelo React Native puro.
+
+# Instruções
 
 Para rodar o app em **debug** pode-se utilizar tanto `expo start` quanto `npx react-native run-android`.
 
@@ -15,11 +17,7 @@ A escolha de suportar paralelamente a plataforma Expo se deu também pela indisp
 
 Além disso o Expo provê automaticamente funcionalidades interessantes, como o OTA, Over-The-Air Updates, que permite atualizar o bundle javascript do app sem publicar um novo binário nas lojas de aplicativos.
 
-Algumas builds deste aplicativo estão disponiveis através do link:
-https://drive.google.com/drive/folders/1adxQ0lSD-ljLsQc1tpv9pp5wIvJfDEno?usp=sharing
-
-Recomendo o apk gerado através do React Native puro na branch master:
-https://drive.google.com/file/d/1s_6IJeXmpFg6WyyN38i5F9IJeZ2nxu6c/view?usp=sharing
+# Sobre
 
 O repositório contém duas branchs: master e redux:
 
@@ -35,4 +33,13 @@ Além disso, contam com:
 	>  Rode os testes com `npm test` .
 - seleção dinâmica do tema do aplicativo (claro ou escuro)
 - seleção dinâmica do idioma do aplicativo, internacionalização (português e inglês)
-	> Selecione o tema e idioma na tela de "Opções" ou "Settings", que pode ser acessada através do botão/icone no canto superior direito do aplicativo. 
+	> Selecione o tema e idioma na tela de "Opções" ou "Settings", que pode ser acessada através do botão/icone no canto superior direito do aplicativo.
+
+# Builds
+
+Algumas builds deste aplicativo estão disponiveis através do link:
+- https://drive.google.com/drive/folders/1adxQ0lSD-ljLsQc1tpv9pp5wIvJfDEno?usp=sharing
+
+Recomendo o apk gerado através do React Native puro na branch master:
+- https://drive.google.com/file/d/1s_6IJeXmpFg6WyyN38i5F9IJeZ2nxu6c/view?usp=sharing
+- https://github.com/franciscosolla/Counters/releases/tag/react-native-v1.0
