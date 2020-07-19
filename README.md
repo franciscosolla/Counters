@@ -35,4 +35,4 @@ Além disso, contam com:
 - seleção dinâmica do idioma do aplicativo, internacionalização (português e inglês)
 	> Selecione o tema e idioma na tela de "Opções" ou "Settings", que pode ser acessada através do botão/icone no canto superior direito do aplicativo. 
 
-![Counters App Icon](https://drive.google.com/uc?export=view&id=1g2ZNYZnzx9Nm2dsfmTXESbFJoDbjtO9i =50x50) 18 de Julho 2020
+![Counters App Icon](https://drive.google.com/uc?export=view&id=1g2ZNYZnzx9Nm2dsfmTXESbFJoDbjtO9i=50x50) 18 de Julho 2020
