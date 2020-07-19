@@ -4,10 +4,8 @@ import React from 'react';
 import { render, fireEvent, createTestStore } from 'jest/test-utils';
 
 import { CountersConfig, CounterList } from '~/components'
-import { useTextsRender } from '../hooks/useTexts.test';
 
-import { useFocusEffect } from '@react-navigation/native'
-jest.mock('@react-navigation/native')
+import { useTextsRender } from '../hooks/useTexts.test';
 
 
 describe('CountersConfig should', () => {

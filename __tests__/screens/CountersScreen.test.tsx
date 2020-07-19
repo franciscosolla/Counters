@@ -5,9 +5,6 @@ import { render, createTestStore } from 'jest/test-utils';
 
 import { CountersScreen } from '~/screens'
 
-import { useFocusEffect } from '@react-navigation/native'
-jest.mock('@react-navigation/native')
-
 import { useTextsRender } from '../hooks/useTexts.test'
 
 
