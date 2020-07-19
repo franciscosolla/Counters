@@ -1,7 +1,18 @@
-expo master: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40franciscosolla/Counters-728b986057d242cf99585b49405cd598-signed.apk
-expo redux: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40franciscosolla/Counters-ca35c1a06a0344a780f3c191d9408815-signed.apk
+expo master:
+  https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40franciscosolla/Counters-728b986057d242cf99585b49405cd598-signed.apk
+  https://drive.google.com/file/d/1yJh341L04IhE7wHbGendB1PmB48E2fWs/view?usp=sharing
 
-react-native master: https://drive.google.com/file/d/1s_6IJeXmpFg6WyyN38i5F9IJeZ2nxu6c/view?usp=sharing
+expo redux:
+  https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40franciscosolla/Counters-ca35c1a06a0344a780f3c191d9408815-signed.apk
+  https://drive.google.com/file/d/1KvkeN60Mb5kB25cN9k5u5Yj6lc8bV0Lf/view?usp=sharing
+
+react-native master:
+  https://drive.google.com/file/d/1s_6IJeXmpFg6WyyN38i5F9IJeZ2nxu6c/view?usp=sharing
+
+react-native redux:
+  https://drive.google.com/file/d/1Db5Y0IUm8f2Bu34rj2fksb6kaOYW1qBK/view?usp=sharing
+
+
 
 Keystore credentials
   Keystore password: 56165c26d7d5471faa5f37dfbf63ce8f
