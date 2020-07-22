@@ -42,3 +42,6 @@ Algumas builds deste aplicativo estão disponiveis através do link:
 Recomendo o apk gerado através do React Native puro na branch master:
 - https://drive.google.com/file/d/1RhW40eOaVwuURxfmWS_zdRvR1PZqc6b8/view?usp=sharing
 - https://github.com/franciscosolla/Counters/releases/tag/react-native-v1.1
+
+Google Play Store:
+https://play.google.com/store/apps/details?id=br.rpp.counters
